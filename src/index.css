@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 20% 6%;
+    --foreground: 0 0% 98%;
+
+    --card: 220 18% 10%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 220 18% 10%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 190 70% 45%;
+    --primary-foreground: 220 20% 6%;
+
+    --secondary: 220 15% 15%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 220 15% 18%;
+    --muted-foreground: 220 10% 60%;
+
+    --accent: 35 100% 50%;
+    --accent-foreground: 220 20% 6%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 15% 20%;
+    --input: 220 15% 20%;
+    --ring: 190 70% 45%;
+
+    --radius: 0.5rem;
+
+    --font-heading: 'Bebas Neue', sans-serif;
+    --font-body: 'Rajdhani', sans-serif;
+
+    --sidebar-background: 220 18% 8%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 190 70% 45%;
+    --sidebar-primary-foreground: 220 20% 6%;
+    --sidebar-accent: 220 15% 15%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 220 15% 20%;
+    --sidebar-ring: 190 70% 45%;
+  }
+
+  .dark {
+    --background: 220 20% 6%;
+    --foreground: 0 0% 98%;
+
+    --card: 220 18% 10%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 220 18% 10%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 190 70% 45%;
+    --primary-foreground: 220 20% 6%;
+
+    --secondary: 220 15% 15%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 220 15% 18%;
+    --muted-foreground: 220 10% 60%;
+
+    --accent: 35 100% 50%;
+    --accent-foreground: 220 20% 6%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 15% 20%;
+    --input: 220 15% 20%;
+    --ring: 190 70% 45%;
+
+    --sidebar-background: 220 18% 8%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 190 70% 45%;
+    --sidebar-primary-foreground: 220 20% 6%;
+    --sidebar-accent: 220 15% 15%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 220 15% 20%;
+    --sidebar-ring: 190 70% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    letter-spacing: 0.05em;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent;
+  }
+
+  .section-padding {
+    @apply py-12 sm:py-16 md:py-24 px-4 sm:px-6 md:px-8;
+  }
+}
+
+/* Smooth GPU-accelerated animations */
+@layer components {
+  .animate-fade-up {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.5s ease-out forwards;
+  }
+
+  @keyframes fadeUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Mobile-friendly pulse glow - simplified */
+  .glow-effect {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.4);
+  }
+
+  /* Touch-friendly hover states */
+  @media (hover: hover) {
+    .hover-lift:hover {
+      transform: translateY(-4px);
+    }
+    
+    .hover-scale:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  /* Active states for touch devices */
+  @media (hover: none) {
+    .hover-lift:active {
+      transform: translateY(-2px);
+    }
+    
+    .hover-scale:active {
+      transform: scale(1.02);
+    }
+  }
+
+  /* Smooth transitions with will-change for performance */
+  .smooth-transition {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform, opacity;
+  }
+}
